@@ -16,11 +16,14 @@
     border: 1px solid var(--glass-border);
     padding: 3rem 4rem;
     border-radius: 20px;
-    text-align: center;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 500px;
 }
 
 /* Subtle glow behind text */
@@ -52,7 +55,7 @@
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .btnOutline {
@@ -68,4 +71,223 @@
 .btnOutline:hover {
     border-color: var(--accent-cyan);
     background: rgba(0, 242, 254, 0.1);
+}
+
+/* ---------------------------------- */
+/* 3D Laptop CSS                      */
+/* ---------------------------------- */
+.laptopWrapper {
+    perspective: 1200px;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.9) translateY(40px);
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .laptopWrapper {
+    transform: scale(0.95) translateY(20px) rotateX(5deg);
+}
+
+.laptop {
+    width: 340px;
+    height: 220px;
+    transform-style: preserve-3d;
+    transform: rotateX(15deg) rotateZ(0deg) rotateY(-20deg);
+    position: relative;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .laptop {
+    transform: rotateX(0deg) rotateZ(0deg) rotateY(-10deg);
+}
+
+.laptopScreen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #2a2a2c, #111);
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    top: 0; left: 0;
+    transform-origin: bottom center;
+    transform: rotateX(-5deg); /* Tilted slightly back from hinge */
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 -2px 15px rgba(255, 255, 255, 0.05);
+    transform-style: preserve-3d;
+}
+
+/* Screen Thickness */
+.laptopScreen::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #444;
+    transform-origin: top;
+    transform: rotateX(-90deg);
+    border-radius: 4px 4px 0 0;
+}
+
+/* Screen Thickness (Top edge) */
+.laptopScreen::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 4px;
+    right: 4px;
+    height: 3px;
+    background: #444;
+    transform-origin: top;
+    transform: rotateX(90deg);
+}
+
+.laptopBezel {
+    position: absolute;
+    inset: 4px 4px 16px 4px;
+    background: #000;
+    border-radius: 8px 8px 2px 2px;
+    overflow: hidden;
+    border: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+}
+
+.laptopCamera {
+    width: 6px;
+    height: 6px;
+    background: #111;
+    border-radius: 50%;
+    margin: 4px auto 4px auto;
+    border: 1px solid #333;
+    box-shadow: inset 0 0 2px #000;
+}
+
+.laptopDisplay {
+    width: 100%;
+    flex: 1;
+    position: relative;
+    background: #050505;
+}
+
+.laptopKeyboard {
+    width: 400px;
+    height: 220px;
+    background: 
+        /* The actual keyboard grid lines creating individual keys */
+        repeating-linear-gradient(to right, transparent 0, transparent 20px, #1a1a1c 20px, #1a1a1c 22px),
+        repeating-linear-gradient(to bottom, transparent 0, transparent 20px, #1a1a1c 20px, #1a1a1c 22px),
+        /* A subtle recess shadow for the keyboard area */
+        radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%),
+        /* Top metal gradient */
+        linear-gradient(135deg, #4b4b4e 0%, #2a2a2c 100%);
+    background-size: 22px 22px, 22px 22px, 100% 100%, 100% 100%;
+    background-position: center top 30px; /* offset grid to leave edge margin */
+    position: absolute;
+    top: 100%; /* Important: attach to bottom of screen! */
+    left: -30px;
+    transform-origin: top center;
+    transform: rotateX(95deg); /* Lays it flat out towards user, 90deg + 5deg extra tilt */
+    transform-style: preserve-3d; /* Keep nested elements 3D */
+    border-radius: 4px 4px 16px 16px;
+    box-shadow: 
+        inset 0 1px 2px rgba(255, 255, 255, 0.2),
+        inset 1px 0 2px rgba(255, 255, 255, 0.1),
+        0 40px 60px rgba(0,0,0,0.8); /* Big drop shadow below base */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20px;
+}
+
+/* Base Depth / Thickness (front edge of laptop) */
+.laptopKeyboard::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px; /* Thickness of laptop */
+    background: linear-gradient(to right, #111, #333, #111);
+    transform-origin: bottom;
+    transform: rotateX(90deg); /* Bend it downwards */
+    border-radius: 0 0 16px 16px;
+}
+
+.laptopTrackpad {
+    width: 120px;
+    height: 60px;
+    margin-bottom: 10px; /* Position in palm rest area */
+    background: rgba(42, 42, 44, 0.9);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(0,0,0,0.8);
+    position: relative;
+    z-index: 5;
+    /* Translate Z so it doesn't clip */
+    transform: translateZ(1px); 
+}
+
+
+/* ---------------------------------- */
+/* Premium Photo Presentation (Mobile)*/
+/* ---------------------------------- */
+.mobileImageWrapper {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover .mobileImageWrapper {
+    transform: scale(1) translateY(0px) rotate(-2deg);
+}
+
+.mobileImageContainer {
+    width: 220px;
+    height: 450px;
+    border-radius: 36px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.5),
+        0 0 0 2px rgba(255,255,255,0.05),
+        0 0 20px rgba(0, 242, 254, 0.2);
+    border: 2px solid #222;
+}
+
+.mobileImage {
+    transition: transform 0.8s ease;
+}
+
+.card:hover .mobileImage {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Add a subtle glass reflection over screens */
+.laptopDisplay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 120%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: screenReflection 8s infinite 1s;
+    pointer-events: none;
+    z-index: 20;
+}
+
+@keyframes screenReflection {
+    0% { left: -100%; }
+    15% { left: 200%; }
+    100% { left: 200%; }
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
 }

@@ -31,7 +31,7 @@ export default function WeeklyOffer() {
                         </h2>
                         <p className={styles.desc}>
                             Get a special discount on the<br />
-                            latest album "STAND-G455"<br />
+                            latest album &quot;STAND-G455&quot;<br />
                             by UMSL available at<br />
                             Play store Retro Beats.
                         </p>
