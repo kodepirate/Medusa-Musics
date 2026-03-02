@@ -4,10 +4,10 @@ import { useAudio } from '@/context/AudioContext';
 import styles from './NewReleases.module.css';
 
 const albums = [
-    { id: 1, title: 'Neon Drift', subtitle: 'Synthwave', cover: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80' },
-    { id: 2, title: 'Midnight', subtitle: 'Electronic', cover: 'https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=300&q=80' },
-    { id: 3, title: 'Cyber City', subtitle: 'Cyberpunk', cover: 'https://images.unsplash.com/photo-1542382156909-9ae37b3f56fd?w=300&q=80' },
-    { id: 4, title: 'Deep Space', subtitle: 'Ambient', cover: 'https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?w=300&q=80' },
+    { id: 1, title: 'Neon Drift', subtitle: 'Synthwave', cover: '/images/albums/neon_drift.png' },
+    { id: 2, title: 'Midnight', subtitle: 'Electronic', cover: '/images/albums/midnight.png' },
+    { id: 3, title: 'Cyber City', subtitle: 'Cyberpunk', cover: '/images/albums/cyber_city.png' },
+    { id: 4, title: 'Deep Space', subtitle: 'Ambient', cover: '/images/albums/deep_space.png' },
 ];
 
 export default function NewReleases() {
@@ -18,7 +18,7 @@ export default function NewReleases() {
             id: 5,
             title: 'STARBOY',
             subtitle: 'Pop/R&B',
-            cover: 'https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&q=80'
+            cover: '/images/albums/starboy.png'
         });
     };
 
@@ -42,7 +42,7 @@ export default function NewReleases() {
                     {/* Main Album (Left side, larger) */}
                     <div className={`${styles.card} ${styles.mainCard}`} onClick={handlePlayMain}>
                         <img
-                            src="https://images.unsplash.com/photo-1619983081563-430f63602796?w=500&q=80"
+                            src="/images/albums/starboy.png"
                             alt="Starboy"
                             className={styles.albumCover}
                         />
@@ -62,8 +62,8 @@ export default function NewReleases() {
                         {/* Top right single album */}
                         <div className={`${styles.card} ${styles.topRightAlbum}`} style={{ animationDelay: '0.2s' }}>
                             <img
-                                src="https://images.unsplash.com/photo-1614613535808-3196b27dcf6d?w=300&q=80"
-                                alt="Music"
+                                src="/images/albums/top_hit.png"
+                                alt="Top Hit"
                                 className={styles.albumCover}
                             />
                             <div className={styles.cardOverlay}>
