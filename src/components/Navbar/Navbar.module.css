@@ -1,0 +1,414 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 0;
+    z-index: 100;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    animation: slideDown 0.8s ease-out forwards;
+}
+
+.scrolled {
+    padding: 0.5rem 0;
+    background: rgba(10, 9, 26, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.navLinks {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.navLinks li {
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.navLinks a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navLinks a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--accent-cyan);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.navLinks a:hover {
+    color: var(--text-primary);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.navLinks a:hover::after {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    gap: 1.5rem;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease 0.6s forwards;
+}
+
+.iconBtn {
+    color: var(--text-primary);
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.iconBtn:hover {
+    color: var(--accent-cyan);
+    transform: scale(1.2) rotate(5deg);
+    filter: drop-shadow(0 0 8px var(--accent-cyan));
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Search Overlay Styles */
+.searchOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 9, 26, 0.95);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeInOverlay 0.4s ease-out forwards;
+}
+
+.closeBtn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.closeBtn:hover {
+    color: var(--accent-pink);
+    transform: rotate(90deg) scale(1.1);
+    background: rgba(255, 8, 68, 0.1);
+}
+
+.searchContainer {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 2rem;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUpSearch 0.5s ease-out 0.2s forwards;
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    transition: border-color 0.3s ease;
+}
+
+.searchForm:focus-within {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 10px 20px -10px rgba(0, 242, 254, 0.3);
+}
+
+.searchIconLarge {
+    width: 32px;
+    height: 32px;
+    color: var(--text-secondary);
+    margin-right: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.searchForm:focus-within .searchIconLarge {
+    color: var(--accent-cyan);
+}
+
+.searchInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+    outline: none;
+    font-family: var(--font-outfit), sans-serif;
+}
+
+.searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
+
+.searchSuggestions {
+    animation: fadeInOverlay 0.5s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.suggestionTitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 242, 254, 0.2);
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUpSearch {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Profile Dropdown Styles */
+.profileWrapper {
+    position: relative;
+}
+
+.profileDropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    width: 250px;
+    background: rgba(15, 13, 35, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 15px rgba(138, 43, 226, 0.2);
+    padding: 1rem;
+    z-index: 1000;
+    opacity: 0;
+    transform-origin: top right;
+    animation: dropIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.profileDropdown::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 18px;
+    width: 12px;
+    height: 12px;
+    background: rgba(15, 13, 35, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+}
+
+.profileHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.profileAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-btn);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.profileName {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 2px 0;
+}
+
+.profilePlan {
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    margin: 0;
+}
+
+.profileMenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profileMenu li {
+    margin: 2px 0;
+}
+
+.profileMenu a,
+.profileMenu button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.profileMenu a:hover,
+.profileMenu button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    transform: translateX(5px);
+}
+
+.logoutBtn {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 0.5rem !important;
+    padding-top: 0.5rem;
+}
+
+.logoutBtn button {
+    color: #ff4b4b !important;
+}
+
+.logoutBtn button:hover {
+    background: rgba(255, 75, 75, 0.1) !important;
+}
+
+@keyframes dropIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}

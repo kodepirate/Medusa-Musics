@@ -1,0 +1,112 @@
+.footer {
+    padding: 6rem 0 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 4rem;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 3rem;
+}
+
+.leftInfo {
+    flex: 1;
+    min-width: 200px;
+}
+
+.profileSnippet {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatarPlaceholder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-btn);
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.linksGrid {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.col h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.col a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.col a:hover {
+    color: var(--accent-cyan);
+}
+
+.rightInfo {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 150px;
+}
+
+.btnOutline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.6rem 0;
+    border-radius: 50px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btnOutline:hover {
+    border-color: var(--accent-blue);
+    background: rgba(0, 242, 254, 0.1);
+}
