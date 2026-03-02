@@ -1,5 +1,7 @@
 .promoSection {
-    padding: 4rem 0;
+    padding: 5rem 0;
+    background: radial-gradient(ellipse at 20% 50%, rgba(0, 242, 254, 0.04) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(156, 39, 176, 0.05) 0%, transparent 60%);
 }
 
 .container {
@@ -12,66 +14,108 @@
 
 .card {
     flex: 1;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    padding: 3rem 4rem;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.02) 50%,
+        rgba(0, 242, 254, 0.03) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem 3rem;
+    border-radius: 28px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 1px 0 rgba(255, 255, 255, 0.12) inset;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 500px;
+    min-height: 520px;
 }
 
-/* Subtle glow behind text */
+/* Large ambient glow blob */
 .card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-    height: 150px;
-    background: var(--accent-cyan);
-    filter: blur(80px);
-    opacity: 0.1;
+    top: -60px;
+    left: -60px;
+    width: 260px;
+    height: 260px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* Shimmering top highlight edge */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), rgba(0, 242, 254, 0.5), rgba(255,255,255,0.3), transparent);
     pointer-events: none;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
+    box-shadow:
+        0 35px 70px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(0, 242, 254, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.07) inset,
+        0 1px 0 rgba(255, 255, 255, 0.15) inset;
+}
+
+.card:hover::before {
+    opacity: 1;
 }
 
 .title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff 60%, rgba(0, 242, 254, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
 }
 
 .desc {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
 }
 
 .btnOutline {
-    background: transparent;
+    display: inline-block;
+    background: rgba(255,255,255,0.04);
     color: var(--text-primary);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.6rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0.65rem 2.5rem;
     border-radius: 50px;
     font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
     transition: all 0.3s ease;
+    width: fit-content;
 }
 
 .btnOutline:hover {
-    border-color: var(--accent-cyan);
-    background: rgba(0, 242, 254, 0.1);
+    border-color: rgba(0, 242, 254, 0.6);
+    background: rgba(0, 242, 254, 0.08);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+    color: rgba(0, 242, 254, 0.9);
 }
+
 
 /* ---------------------------------- */
 /* 3D Laptop CSS                      */
