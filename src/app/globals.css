@@ -15,7 +15,7 @@
   --glass-border: rgba(255, 255, 255, 0.05);
   
   --font-main: var(--font-outfit), sans-serif;
-  --container-width: 1200px;
+  --container-width: 1600px;
 }
 
 * {
@@ -54,5 +54,5 @@ button {
 .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }

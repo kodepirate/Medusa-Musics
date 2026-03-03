@@ -5,6 +5,9 @@ export default function DownloadApp() {
     return (
         <section className={styles.section}>
             <div className={styles.container}>
+                {/* Decorative background blobs */}
+                <div className={styles.bgBlobTop}></div>
+                <div className={styles.bgBlobBottom}></div>
 
                 <div className={styles.imageWrap}>
                     <div className={styles.phoneGlow}></div>

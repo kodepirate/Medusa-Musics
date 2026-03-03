@@ -37,10 +37,24 @@ export default function Hero() {
                 <div className={styles.imageWrapper}>
                     {/* Floating Background Albums */}
                     <div className={`${styles.bgAlbum} ${styles.album1}`}>
-                        <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=300&q=80" alt="Album Cover 1" />
+                        <Image 
+                            src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=300&q=80" 
+                            alt="Album Cover 1" 
+                            width={300} 
+                            height={300} 
+                            style={{ objectFit: 'cover' }}
+                            quality={80}
+                        />
                     </div>
                     <div className={`${styles.bgAlbum} ${styles.album2}`}>
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80" alt="Album Cover 2" />
+                        <Image 
+                            src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=300&q=80" 
+                            alt="Album Cover 2" 
+                            width={300} 
+                            height={300} 
+                            style={{ objectFit: 'cover' }}
+                            quality={80}
+                        />
                     </div>
 
                     <Image

@@ -6,6 +6,9 @@ export default function WeeklyOffer() {
         <section className={styles.section}>
             <div className={styles.container}>
                 <div className={styles.offerCard}>
+                    {/* Ambient Glow Effects */}
+                    <div className={styles.glowOrb1}></div>
+                    <div className={styles.glowOrb2}></div>
 
                     <div className={styles.mediaWrap}>
                         <div className={styles.albumSleeve}>

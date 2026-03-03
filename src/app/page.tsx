@@ -1,12 +1,15 @@
+import dynamic from 'next/dynamic';
 import Navbar from '@/components/Navbar/Navbar';
 import Hero from '@/components/Hero/Hero';
-import SectionPremium from '@/components/SectionPremium/SectionPremium';
-import NewReleases from '@/components/NewReleases/NewReleases';
-import AppPromo from '@/components/AppPromo/AppPromo';
-import PhysicalMedia from '@/components/PhysicalMedia/PhysicalMedia';
-import WeeklyOffer from '@/components/WeeklyOffer/WeeklyOffer';
-import DownloadApp from '@/components/DownloadApp/DownloadApp';
-import Footer from '@/components/Footer/Footer';
+
+// Dynamically import below-the-fold components to reduce initial JS payload
+const SectionPremium = dynamic(() => import('@/components/SectionPremium/SectionPremium'));
+const NewReleases = dynamic(() => import('@/components/NewReleases/NewReleases'));
+const AppPromo = dynamic(() => import('@/components/AppPromo/AppPromo'));
+const PhysicalMedia = dynamic(() => import('@/components/PhysicalMedia/PhysicalMedia'));
+const WeeklyOffer = dynamic(() => import('@/components/WeeklyOffer/WeeklyOffer'));
+const DownloadApp = dynamic(() => import('@/components/DownloadApp/DownloadApp'));
+const Footer = dynamic(() => import('@/components/Footer/Footer'));
 
 export default function Home() {
   return (
