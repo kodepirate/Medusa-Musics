@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import { useAudio } from '@/context/AudioContext';
 import styles from './NewReleases.module.css';
 
@@ -41,10 +42,13 @@ export default function NewReleases() {
                 <div className={styles.grid}>
                     {/* Main Album (Left side, larger) */}
                     <div className={`${styles.card} ${styles.mainCard}`} onClick={handlePlayMain}>
-                        <img
+                        <Image
                             src="/images/albums/starboy.png"
                             alt="Starboy"
+                            width={400}
+                            height={400}
                             className={styles.albumCover}
+                            sizes="(max-width: 768px) 100vw, 400px"
                         />
                         <div className={styles.cardOverlay}>
                             <div className={styles.playBtn}>
@@ -61,10 +65,13 @@ export default function NewReleases() {
                         {/* Top right single album */}
                         {/* Top right single album */}
                         <div className={`${styles.card} ${styles.topRightAlbum}`} style={{ animationDelay: '0.2s' }}>
-                            <img
+                            <Image
                                 src="/images/albums/top_hit.png"
                                 alt="Top Hit"
+                                width={300}
+                                height={300}
                                 className={styles.albumCover}
+                                sizes="(max-width: 768px) 50vw, 300px"
                             />
                             <div className={styles.cardOverlay}>
                                 <div className={styles.cardInfo}>
@@ -82,7 +89,14 @@ export default function NewReleases() {
                                     onClick={() => playTrack(album)}
                                     style={{ animationDelay: `${0.3 + (index * 0.1)}s` }}
                                 >
-                                    <img src={album.cover} alt={album.title} className={styles.albumCover} />
+                                    <Image 
+                                        src={album.cover} 
+                                        alt={album.title} 
+                                        width={202}
+                                        height={202}
+                                        className={styles.albumCover} 
+                                        sizes="(max-width: 768px) 50vw, 202px"
+                                    />
                                     <div className={styles.cardOverlay}>
                                         <div className={styles.playBtnSmall}>
                                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>

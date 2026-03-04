@@ -42,6 +42,7 @@ export default function SectionPremium() {
                             width={400}
                             height={400}
                             className={styles.vinyl}
+                            sizes="(max-width: 768px) 100vw, 400px"
                         />
                         {/* Smaller floating elements */}
                         <div className={`${styles.musicNote} ${styles.note1}`}>♪</div>

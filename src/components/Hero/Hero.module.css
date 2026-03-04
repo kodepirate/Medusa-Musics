@@ -289,11 +289,12 @@
     left: 0;
     top: 0;
     height: 100%;
-    width: 40%;
+    width: 100%;
+    transform-origin: left;
     background: var(--gradient-btn);
     border-radius: 2px;
     box-shadow: 0 0 10px var(--accent-cyan);
-    transition: width 0.1s linear;
+    transition: transform 0.1s linear;
 }
 
 /* ─── Tablet / ≤992px ───────────────────────────────────── */

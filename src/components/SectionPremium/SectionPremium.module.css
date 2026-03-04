@@ -156,11 +156,10 @@
 .shine {
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 50%;
     height: 100%;
     background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
-    transform: skewX(-20deg);
     animation: shineMovement 4s infinite;
     z-index: 1;
 }
@@ -238,15 +237,15 @@
 
 @keyframes shineMovement {
     0% {
-        left: -100%;
+        transform: translateX(-200%) skewX(-20deg);
     }
 
     20% {
-        left: 200%;
+        transform: translateX(400%) skewX(-20deg);
     }
 
     100% {
-        left: 200%;
+        transform: translateX(400%) skewX(-20deg);
     }
 }
 

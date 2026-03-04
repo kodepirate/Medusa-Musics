@@ -45,6 +45,7 @@ export default function Hero() {
                             style={{ objectFit: 'cover' }}
                             priority
                             fetchPriority="high"
+                            sizes="(max-width: 992px) 150px, (min-width: 1920px) 200px, 180px"
                         />
                     </div>
                     <div className={`${styles.bgAlbum} ${styles.album2}`}>
@@ -56,6 +57,7 @@ export default function Hero() {
                             style={{ objectFit: 'cover' }}
                             priority
                             fetchPriority="high"
+                            sizes="(max-width: 992px) 110px, (min-width: 1920px) 150px, 130px"
                         />
                     </div>
 
@@ -66,6 +68,7 @@ export default function Hero() {
                         height={700}
                         className={styles.heroImage}
                         priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1439px) 450px, (max-width: 1919px) 520px, 600px"
                     />
                 </div>
 
@@ -89,7 +92,7 @@ export default function Hero() {
                     <div className={styles.playerTimeline}>
                         <span className={styles.timeLabel}>00:00</span>
                         <div className={styles.progressBar}>
-                            <div className={styles.progressFill} style={{ width: `${progress}%` }}></div>
+                            <div className={styles.progressFill} style={{ transform: `scaleX(${progress / 100})` }}></div>
                         </div>
                         <span className={styles.timeLabel}>03:45</span>
                     </div>
