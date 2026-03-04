@@ -43,7 +43,7 @@ export default function Hero() {
                             width={300} 
                             height={300} 
                             style={{ objectFit: 'cover' }}
-                            quality={80}
+                            priority
                         />
                     </div>
                     <div className={`${styles.bgAlbum} ${styles.album2}`}>
@@ -53,7 +53,7 @@ export default function Hero() {
                             width={300} 
                             height={300} 
                             style={{ objectFit: 'cover' }}
-                            quality={80}
+                            priority
                         />
                     </div>
 

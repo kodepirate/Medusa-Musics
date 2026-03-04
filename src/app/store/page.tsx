@@ -39,7 +39,7 @@ export default function Store() {
                     {/* Merch Item 1 */}
                     <div className={styles.productCard}>
                         <div className={styles.productImage}>
-                            <Image src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80" alt="Hoodie" width={300} height={300} objectFit="cover" />
+                            <Image src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80" alt="Hoodie" width={300} height={300} style={{ objectFit: 'cover' }} />
                         </div>
                         <div className={styles.productInfo}>
                             <h3>Neon Nights Hoodie</h3>
@@ -53,7 +53,7 @@ export default function Store() {
                     {/* Merch Item 2 */}
                     <div className={styles.productCard}>
                         <div className={styles.productImage}>
-                            <Image src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80" alt="T-Shirt" width={300} height={300} objectFit="cover" />
+                            <Image src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=400&q=80" alt="T-Shirt" width={300} height={300} style={{ objectFit: 'cover' }} />
                         </div>
                         <div className={styles.productInfo}>
                             <h3>Synthwave T-Shirt</h3>
@@ -67,7 +67,7 @@ export default function Store() {
                      {/* Merch Item 3 */}
                     <div className={styles.productCard}>
                         <div className={styles.productImage}>
-                            <Image src="https://images.unsplash.com/photo-1588722135650-dd6bdceab446?w=400&q=80" alt="Cap" width={300} height={300} objectFit="cover" />
+                            <Image src="https://images.unsplash.com/photo-1588722135650-dd6bdceab446?w=400&q=80" alt="Cap" width={300} height={300} style={{ objectFit: 'cover' }} />
                         </div>
                         <div className={styles.productInfo}>
                             <h3>Retro Logo Cap</h3>

@@ -25,6 +25,8 @@ export default function WeeklyOffer() {
                             width={200}
                             height={200}
                             className={styles.vinyl}
+                            priority
+                            fetchPriority="high"
                         />
                     </div>
 

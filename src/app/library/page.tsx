@@ -87,7 +87,7 @@ export default function Library() {
                     {/* Item 1 */}
                     <div className={styles.playlistCard}>
                         <div className={styles.playlistImageWrap}>
-                            <Image src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&q=80" alt="Playlist Cover" width={200} height={200} objectFit="cover" />
+                            <Image src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
                                 <button className={styles.playCardBtn}>
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
@@ -101,7 +101,7 @@ export default function Library() {
                     {/* Item 2 */}
                     <div className={styles.playlistCard}>
                         <div className={styles.playlistImageWrap}>
-                            <Image src="https://images.unsplash.com/photo-1493225457124-a1a2a5f5f9af?w=300&q=80" alt="Playlist Cover" width={200} height={200} objectFit="cover" />
+                            <Image src="https://images.unsplash.com/photo-1493225457124-a1a2a5f5f9af?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
                                 <button className={styles.playCardBtn}>
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
@@ -115,7 +115,7 @@ export default function Library() {
                     {/* Item 3 */}
                     <div className={styles.playlistCard}>
                         <div className={styles.playlistImageWrap}>
-                            <Image src="https://images.unsplash.com/photo-1516280440502-65f536af50dc?w=300&q=80" alt="Playlist Cover" width={200} height={200} objectFit="cover" />
+                            <Image src="https://images.unsplash.com/photo-1516280440502-65f536af50dc?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
                                 <button className={styles.playCardBtn}>
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
@@ -129,7 +129,7 @@ export default function Library() {
                     {/* Item 4 */}
                     <div className={styles.playlistCard}>
                         <div className={styles.playlistImageWrap}>
-                            <Image src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&q=80" alt="Playlist Cover" width={200} height={200} objectFit="cover" />
+                            <Image src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
                                 <button className={styles.playCardBtn}>
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>

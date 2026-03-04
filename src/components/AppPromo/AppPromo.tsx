@@ -26,7 +26,7 @@ export default function AppPromo() {
                                 <div className={styles.laptopBezel}>
                                     <div className={styles.laptopCamera}></div>
                                     <div className={styles.laptopDisplay}>
-                                        <Image src="/images/webapp_ui.png" alt="Web App" layout="fill" objectFit="cover" />
+                                        <Image src="/images/webapp_ui.png" alt="Web App" fill style={{ objectFit: 'cover' }} />
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@ export default function AppPromo() {
                     {/* Floating Mobile App Image */}
                     <div className={styles.mobileImageWrapper}>
                         <div className={styles.mobileImageContainer}>
-                             <Image src="/images/mobileapp_ui.png" alt="Mobile App" layout="fill" objectFit="cover" className={styles.mobileImage} />
+                             <Image src="/images/mobileapp_ui.png" alt="Mobile App" fill style={{ objectFit: 'cover' }} className={styles.mobileImage} />
                         </div>
                     </div>
                 </div>
