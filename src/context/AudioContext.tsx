@@ -34,6 +34,22 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     const [currentTrack, setCurrentTrack] = useState<Track | null>(defaultTracks[4]); // default to WAY TURN
     const [progress, setProgress] = useState(0);
 
+    const nextTrack = React.useCallback(() => {
+        if (!currentTrack) return;
+        const currentIndex = defaultTracks.findIndex(t => t.id === currentTrack.id);
+        const nextIndex = (currentIndex + 1) % defaultTracks.length;
+        setCurrentTrack(defaultTracks[nextIndex]);
+        setProgress(0);
+    }, [currentTrack]);
+
+    const prevTrack = React.useCallback(() => {
+        if (!currentTrack) return;
+        const currentIndex = defaultTracks.findIndex(t => t.id === currentTrack.id);
+        const prevIndex = currentIndex === 0 ? defaultTracks.length - 1 : currentIndex - 1;
+        setCurrentTrack(defaultTracks[prevIndex]);
+        setProgress(0);
+    }, [currentTrack]);
+
     // Simulate progress
     useEffect(() => {
         let interval: NodeJS.Timeout;
@@ -44,34 +60,18 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
                         nextTrack();
                         return 0;
                     }
-                    return prev + 0.5; // simulate some speed
+                    return prev + 1; // Increase step size to reduce total re-renders over time
                 });
-            }, 1000);
+            }, 2000); // Throttle interval to 2 seconds
         }
         return () => clearInterval(interval);
-    }, [isPlaying]);
+    }, [isPlaying, nextTrack]); // Add nextTrack to dependencies to fix exhaustive-deps warning
 
     const togglePlay = () => setIsPlaying(!isPlaying);
 
     const playTrack = (track: Track) => {
         setCurrentTrack(track);
         setIsPlaying(true);
-        setProgress(0);
-    };
-
-    const nextTrack = () => {
-        if (!currentTrack) return;
-        const currentIndex = defaultTracks.findIndex(t => t.id === currentTrack.id);
-        const nextIndex = (currentIndex + 1) % defaultTracks.length;
-        setCurrentTrack(defaultTracks[nextIndex]);
-        setProgress(0);
-    };
-
-    const prevTrack = () => {
-        if (!currentTrack) return;
-        const currentIndex = defaultTracks.findIndex(t => t.id === currentTrack.id);
-        const prevIndex = currentIndex === 0 ? defaultTracks.length - 1 : currentIndex - 1;
-        setCurrentTrack(defaultTracks[prevIndex]);
         setProgress(0);
     };
 
