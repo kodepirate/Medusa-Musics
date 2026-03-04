@@ -44,6 +44,7 @@ export default function Hero() {
                             height={300} 
                             style={{ objectFit: 'cover' }}
                             priority
+                            fetchPriority="high"
                         />
                     </div>
                     <div className={`${styles.bgAlbum} ${styles.album2}`}>
@@ -54,6 +55,7 @@ export default function Hero() {
                             height={300} 
                             style={{ objectFit: 'cover' }}
                             priority
+                            fetchPriority="high"
                         />
                     </div>
 
@@ -70,17 +72,17 @@ export default function Hero() {
                 {/* Player Widget overlaying entire section */}
                 <div className={styles.playerWidget}>
                     <div className={styles.playerControls}>
-                        <button className={styles.widgetIconBtn} onClick={prevTrack}>
+                        <button className={styles.widgetIconBtn} onClick={prevTrack} aria-label="Previous Track">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11 5L4 12l7 7v-3h8v-8h-8V5z"></path></svg>
                         </button>
-                        <button className={styles.widgetPlayBtn} onClick={togglePlay}>
+                        <button className={styles.widgetPlayBtn} onClick={togglePlay} aria-label={isPlaying ? "Pause Track" : "Play Track"}>
                             {isPlaying ? (
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
                             ) : (
                                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                             )}
                         </button>
-                        <button className={styles.widgetIconBtn} onClick={nextTrack}>
+                        <button className={styles.widgetIconBtn} onClick={nextTrack} aria-label="Next Track">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 5v3H5v8h8v3l7-7-7-7z"></path></svg>
                         </button>
                     </div>

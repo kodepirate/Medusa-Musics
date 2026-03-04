@@ -30,29 +30,29 @@ export default function Footer() {
 
                 <div className={styles.linksGrid}>
                     <div className={styles.col}>
-                        <h4>About</h4>
+                        <h3>About</h3>
                         <ul>
-                            <li><Link href="#">Premium</Link></li>
-                            <li><Link href="#">Promo Total</Link></li>
-                            <li><Link href="#">Podcast</Link></li>
-                            <li><Link href="#">Infinity</Link></li>
+                            <li><Link href="/premium">Premium</Link></li>
+                            <li><Link href="/store">Promo Total</Link></li>
+                            <li><Link href="/library">Podcast</Link></li>
+                            <li><Link href="#infinity">Infinity</Link></li>
                         </ul>
                     </div>
                     <div className={styles.col}>
-                        <h4>Services</h4>
+                        <h3>Services</h3>
                         <ul>
-                            <li><Link href="#">Our Offerings</Link></li>
-                            <li><Link href="#">Blogs</Link></li>
-                            <li><Link href="#">Career</Link></li>
-                            <li><Link href="#">AI</Link></li>
-                            <li><Link href="#">Events</Link></li>
+                            <li><Link href="#offerings">Our Offerings</Link></li>
+                            <li><Link href="#blogs">Blogs</Link></li>
+                            <li><Link href="#career">Career</Link></li>
+                            <li><Link href="#ai">AI</Link></li>
+                            <li><Link href="#events">Events</Link></li>
                         </ul>
                     </div>
                     <div className={styles.col}>
-                        <h4>Support</h4>
+                        <h3>Support</h3>
                         <ul>
-                            <li><Link href="#">support@medusa.com</Link></li>
-                            <li><Link href="#">+12 345 6789</Link></li>
+                            <li><Link href="mailto:support@medusacom">support@medusa.com</Link></li>
+                            <li><Link href="tel:+123456789">+12 345 6789</Link></li>
                         </ul>
                     </div>
                 </div>

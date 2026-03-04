@@ -87,7 +87,7 @@
 
 .role {
     font-size: 0.85rem;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.7);
     margin-top: 0.2rem;
 }
 
@@ -208,7 +208,7 @@
     margin-top: 3rem;
     padding-bottom: 0.5rem; /* Only a tiny bit of breathing room at the dead end */
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.7);
     position: relative;
     z-index: 2;
 }

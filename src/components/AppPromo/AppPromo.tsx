@@ -9,7 +9,7 @@ export default function AppPromo() {
                 {/* Web App Card with 3D Laptop */}
                 <div className={styles.card}>
                     <div className={styles.textContent}>
-                        <h3 className={styles.title}>Retro Web WebApp</h3>
+                        <h2 className={styles.title}>Retro Web WebApp</h2>
                         <p className={styles.desc}>
                             Medusa is the premium and reliable<br />
                             platform for online streaming all media.<br />
@@ -40,7 +40,7 @@ export default function AppPromo() {
                 {/* Mobile App Card with 3D Phone */}
                 <div className={styles.card}>
                     <div className={styles.textContent}>
-                        <h3 className={styles.title}>Retro Web MobileApp</h3>
+                        <h2 className={styles.title}>Retro Web MobileApp</h2>
                         <p className={styles.desc}>
                             Medusa is the premium and reliable<br />
                             platform for online streaming all media.<br />

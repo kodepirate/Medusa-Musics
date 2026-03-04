@@ -45,15 +45,15 @@ export default function Library() {
                 <div className={styles.recentGrid}>
                     <div className={styles.recentItem}>
                         <Image src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?w=150&q=80" alt="Album Art" width={80} height={80} className={styles.recentImg} />
-                        <h4 className={styles.recentTitle}>Neon Nights Vol. 1</h4>
-                        <button className={styles.playBtn}>
+                        <h3 className={styles.recentTitle}>Neon Nights Vol. 1</h3>
+                        <button className={styles.playBtn} aria-label="Play">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                         </button>
                     </div>
                     <div className={styles.recentItem}>
                         <Image src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=150&q=80" alt="Album Art" width={80} height={80} className={styles.recentImg} />
-                        <h4 className={styles.recentTitle}>Daily Mix 1</h4>
-                        <button className={styles.playBtn}>
+                        <h3 className={styles.recentTitle}>Daily Mix 1</h3>
+                        <button className={styles.playBtn} aria-label="Play">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                         </button>
                     </div>
@@ -61,14 +61,14 @@ export default function Library() {
                         <div className={`${styles.recentImg} ${styles.likedImg}`}>
                             <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
                         </div>
-                        <h4 className={styles.recentTitle}>Liked Songs</h4>
-                        <button className={styles.playBtn}>
+                        <h3 className={styles.recentTitle}>Liked Songs</h3>
+                        <button className={styles.playBtn} aria-label="Play">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                         </button>
                     </div>
                     <div className={styles.recentItem}>
                         <Image src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=150&q=80" alt="Album Art" width={80} height={80} className={styles.recentImg} />
-                        <h4 className={styles.recentTitle}>Cyberpunk Vibes</h4>
+                        <h3 className={styles.recentTitle}>Cyberpunk Vibes</h3>
                         <button className={styles.playBtn}>
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                         </button>
@@ -89,7 +89,7 @@ export default function Library() {
                         <div className={styles.playlistImageWrap}>
                             <Image src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
-                                <button className={styles.playCardBtn}>
+                                <button className={styles.playCardBtn} aria-label="Play Playlist">
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                                 </button>
                             </div>
@@ -103,7 +103,7 @@ export default function Library() {
                         <div className={styles.playlistImageWrap}>
                             <Image src="https://images.unsplash.com/photo-1493225457124-a1a2a5f5f9af?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
-                                <button className={styles.playCardBtn}>
+                                <button className={styles.playCardBtn} aria-label="Play Playlist">
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                                 </button>
                             </div>
@@ -117,7 +117,7 @@ export default function Library() {
                         <div className={styles.playlistImageWrap}>
                             <Image src="https://images.unsplash.com/photo-1516280440502-65f536af50dc?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
-                                <button className={styles.playCardBtn}>
+                                <button className={styles.playCardBtn} aria-label="Play Playlist">
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                                 </button>
                             </div>
@@ -131,7 +131,7 @@ export default function Library() {
                         <div className={styles.playlistImageWrap}>
                             <Image src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=300&q=80" alt="Playlist Cover" width={200} height={200} style={{ objectFit: 'cover' }} />
                             <div className={styles.overlay}>
-                                <button className={styles.playCardBtn}>
+                                <button className={styles.playCardBtn} aria-label="Play Playlist">
                                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
                                 </button>
                             </div>
