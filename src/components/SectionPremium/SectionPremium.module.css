@@ -42,6 +42,9 @@
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
     mask-composite: exclude;
     pointer-events: none;
     z-index: 10;
@@ -282,5 +285,62 @@
     100% {
         transform: translateY(-40px) scale(1.2) rotate(15deg);
         opacity: 0;
+    }
+}
+
+/* ─── Tablet / ≤768px ───────────────────────────────────── */
+@media (max-width: 768px) {
+    .premiumSection {
+        padding: 4rem 0;
+    }
+
+    .premiumCard {
+        flex-direction: column;
+        padding: 3rem 2rem;
+        gap: 2.5rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .imageWrap {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .featureList li {
+        justify-content: center;
+    }
+}
+
+/* ─── Small phones / ≤480px ─────────────────────────────── */
+@media (max-width: 480px) {
+    .premiumCard {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .description {
+        font-size: 0.95rem;
+    }
+
+    .btnPremium {
+        width: 100%;
+        text-align: center;
+    }
+
+    .vinylGlow {
+        width: 200px;
+        height: 200px;
     }
 }

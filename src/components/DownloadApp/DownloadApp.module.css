@@ -182,3 +182,24 @@
         flex-wrap: wrap;
     }
 }
+
+/* ─── Small phones / ≤480px ─────────────────────────────── */
+@media (max-width: 480px) {
+    .section {
+        padding: 5rem 0;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .downloadBtn {
+        width: 100%;
+        justify-content: center;
+    }
+}

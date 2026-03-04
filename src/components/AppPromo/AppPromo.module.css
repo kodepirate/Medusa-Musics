@@ -336,3 +336,53 @@
         flex-direction: column;
     }
 }
+
+/* ─── Tablet / ≤768px ───────────────────────────────────── */
+@media (max-width: 768px) {
+    .promoSection {
+        padding: 3rem 0;
+    }
+
+    .card {
+        padding: 2rem 2rem;
+        min-height: auto;
+    }
+
+    .laptopWrapper {
+        transform: scale(0.65) translateY(-200px);
+    }
+
+    .card:hover .laptopWrapper {
+        transform: scale(0.68) translateY(-210px);
+    }
+
+    .mobileImageWrapper {
+        margin-top: 1.5rem;
+    }
+}
+
+/* ─── Small phones / ≤480px ─────────────────────────────── */
+@media (max-width: 480px) {
+    .container {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Hide 3D laptop – too complex to render at tiny sizes */
+    .laptopWrapper {
+        display: none;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .btnOutline {
+        width: 100%;
+        text-align: center;
+    }
+}

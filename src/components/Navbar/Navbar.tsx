@@ -9,6 +9,7 @@ export default function Navbar() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [isProfileOpen, setIsProfileOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,6 +20,7 @@ export default function Navbar() {
             if (e.key === 'Escape') {
                 setIsSearchOpen(false);
                 setIsProfileOpen(false);
+                setMenuOpen(false);
             }
         };
 
@@ -58,7 +60,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
+        <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${menuOpen ? styles.menuOpen : ''}`}>
             <div className={styles.container}>
                 <div className={styles.logo}>
                     <Link href="/">
@@ -113,7 +115,29 @@ export default function Navbar() {
                         )}
                     </div>
                 </div>
+
+                {/* Hamburger Button – mobile only */}
+                <button
+                    className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label="Toggle menu"
+                >
+                    <span /><span /><span />
+                </button>
             </div>
+
+            {/* Mobile Nav Drawer */}
+            {menuOpen && (
+                <div className={styles.mobileDrawer}>
+                    <ul className={styles.mobileLinks}>
+                        <li><Link href="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+                        <li><Link href="/store" onClick={() => setMenuOpen(false)}>Store</Link></li>
+                        <li><Link href="/premium" onClick={() => setMenuOpen(false)}>Premium</Link></li>
+                        <li><Link href="/download" onClick={() => setMenuOpen(false)}>Download</Link></li>
+                        <li><Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
+                    </ul>
+                </div>
+            )}
 
             {/* Search Overlay */}
             {isSearchOpen && (

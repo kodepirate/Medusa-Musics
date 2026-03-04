@@ -56,3 +56,20 @@ button {
   margin: 0 auto;
   padding: 0 1.5rem;
 }
+
+/* ─── Page Transitions ───────────────────────────── */
+.page-transition {
+  animation: pageEnter 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0; 
+}
+
+@keyframes pageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

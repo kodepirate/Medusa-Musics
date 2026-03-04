@@ -340,6 +340,10 @@
 }
 
 @media screen and (max-width: 480px) {
+    .section {
+        padding: 3rem 0;
+    }
+
     .title {
         font-size: 1.5rem;
     }
@@ -350,5 +354,15 @@
     
     .cardInfo h3 {
         font-size: 2rem;
+    }
+
+    .btnPremium {
+        width: 100%;
+        font-size: 1rem;
+        padding: 0.9rem 1.5rem;
+    }
+
+    .header {
+        margin-bottom: 2.5rem;
     }
 }

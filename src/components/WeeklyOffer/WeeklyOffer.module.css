@@ -210,3 +210,51 @@
     box-shadow: 0 8px 25px rgba(0, 242, 254, 0.3);
     transform: translateY(-2px);
 }
+
+/* ─── Tablet / ≤768px ───────────────────────────────────── */
+@media (max-width: 768px) {
+    .section {
+        padding: 3rem 0;
+    }
+
+    .offerCard {
+        flex-direction: column;
+        padding: 3rem 2.5rem;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .mediaWrap {
+        width: 100%;
+        height: 220px;
+        justify-content: center;
+    }
+
+    .content {
+        padding-left: 0;
+    }
+}
+
+/* ─── Small phones / ≤480px ─────────────────────────────── */
+@media (max-width: 480px) {
+    .offerCard {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .title {
+        font-size: 1.15rem;
+    }
+
+    .albumSleeve {
+        width: 160px;
+        height: 160px;
+    }
+
+    .vinyl {
+        display: none; /* hide vinyl animation on tiny screens */
+    }
+
+    .btnOutline {
+        width: 100%;
+    }
+}

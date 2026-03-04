@@ -214,3 +214,22 @@
         justify-content: center;
     }
 }
+
+/* ─── Small phones / ≤480px ─────────────────────────────── */
+@media (max-width: 480px) {
+    .section {
+        padding: 3rem 0;
+    }
+
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .btnGradient {
+        width: 100%;
+    }
+}

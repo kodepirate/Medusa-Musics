@@ -261,3 +261,38 @@
         justify-content: center;
     }
 }
+
+/* ─── Small phones / ≤480px ─────────────────────────────── */
+@media (max-width: 480px) {
+    .footer {
+        padding: 4rem 0 0;
+    }
+
+    .container {
+        padding: 2rem 1.2rem;
+        border-radius: 20px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .linksGrid {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .col {
+        text-align: center;
+    }
+
+    .col a:hover {
+        transform: none; /* avoid x-shift in centered layout */
+    }
+
+    .manufacturerCredit {
+        font-size: 0.8rem;
+        margin-top: 2rem;
+    }
+}

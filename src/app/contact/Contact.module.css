@@ -1,0 +1,269 @@
+.contactPage {
+    padding-top: 130px;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.contactPage::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 80vh;
+    background: radial-gradient(ellipse at top left, rgba(6, 249, 249, 0.15), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.contactPage::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    height: 60vh;
+    background: radial-gradient(ellipse at bottom right, rgba(140, 37, 244, 0.1), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 0 2rem;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.gradientText {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.magentaText {
+    color: var(--accent-pink);
+    text-shadow: 0 0 20px rgba(242, 13, 185, 0.4);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ─── Main Container ─────────────────────────────────── */
+.mainContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    padding: 0 2rem;
+}
+
+/* ─── Form Section ─────────────────────────────────── */
+.formSection {
+    flex: 6;
+}
+
+.glassCard {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    padding: 3rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.02);
+}
+
+.glassCard h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.inputGroup label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(6, 249, 249, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.inputGroup select {
+    appearance: none;
+    cursor: pointer;
+}
+
+.inputGroup textarea {
+    resize: vertical;
+}
+
+/* ─── Buttons ─────────────────────────────────── */
+.btn {
+    padding: 1.2rem;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+    margin-top: 1rem;
+}
+
+.btnPrimary {
+    background: var(--gradient-btn);
+    color: var(--bg-primary);
+    box-shadow: 0 0 20px rgba(6, 249, 249, 0.4);
+}
+
+.btnPrimary:hover {
+    box-shadow: 0 0 30px rgba(6, 249, 249, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ─── Info Section (Right) ─────────────────────────────────── */
+.infoSection {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.contactOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contactOption {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.iconCircle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(6, 249, 249, 0.1);
+    border: 1px solid rgba(6, 249, 249, 0.2);
+    color: var(--accent-cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contactOption h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.contactOption p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* ─── FAQ ─────────────────────────────────── */
+.faqSection h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.faqItem {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faqItem:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.faqItem h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+.faqItem p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 992px) {
+    .mainContainer {
+        flex-direction: column;
+    }
+    
+    .infoSection {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    
+    .glassCard {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contactPage {
+        padding-top: 100px;
+    }
+    .title {
+        font-size: 2.5rem;
+    }
+    .glassCard {
+        padding: 1.5rem;
+    }
+}

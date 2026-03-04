@@ -1,0 +1,372 @@
+.libraryPage {
+    padding-top: 100px;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+    overflow-x: hidden;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+/* ─── Header Profiles & Stats ───────────────────────────── */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profileInfo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    box-shadow: 0 0 20px rgba(6, 249, 249, 0.3);
+}
+
+.greeting {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+}
+
+.userName {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+.statLabel {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ─── Quick Actions (Pills) ───────────────────────────── */
+.quickActions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.quickActions::-webkit-scrollbar {
+    height: 4px;
+}
+
+.quickActions::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.btnAction {
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btnAction:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btnAction.active {
+    background: white;
+    color: var(--bg-primary);
+    border-color: white;
+}
+
+/* ─── Sections Shared ─────────────────────────────────── */
+.section {
+    margin-bottom: 4rem;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.cyanText {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 15px rgba(6, 249, 249, 0.4);
+}
+
+.magentaText {
+    color: var(--accent-pink);
+    text-shadow: 0 0 15px rgba(242, 13, 185, 0.4);
+}
+
+.createBtn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    background: transparent;
+    border: 1px solid var(--accent-pink);
+    color: var(--accent-pink);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 1.5rem;
+}
+
+.createBtn:hover {
+    background: var(--accent-pink);
+    color: var(--bg-primary);
+    box-shadow: 0 0 15px rgba(242, 13, 185, 0.4);
+}
+
+/* ─── Recently Played Grid ───────────────────────────── */
+.recentGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.recentItem {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background 0.3s ease;
+    cursor: pointer;
+    padding-right: 1rem;
+}
+
+.recentItem:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.recentImg {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.likedImg {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-cyan));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recentTitle {
+    flex: 1;
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.playBtn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(6, 249, 249, 0.4);
+    padding-left: 3px; /* visual center */
+}
+
+.recentItem:hover .playBtn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ─── Playlist Grid (Vertical Cards) ───────────────────────────── */
+.playlistGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
+}
+
+.playlistCard {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1rem;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.playlistCard:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.playlistImageWrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.playlistImageWrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.playlistCard:hover .overlay {
+    opacity: 1;
+}
+
+.playCardBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--accent-pink);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 20px rgba(242, 13, 185, 0.5);
+    padding-left: 3px;
+}
+
+.playlistCard:hover .playCardBtn {
+    transform: translateY(0);
+}
+
+.playlistCard h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlistCard p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+    
+    .stats {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .recentGrid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Play buttons always visible on mobile */
+    .playBtn {
+        opacity: 1;
+        transform: none;
+    }
+    .playCardBtn {
+        opacity: 1;
+        transform: none;
+    }
+    .overlay {
+        display: none; /* Hide dark overlay on mobile */
+    }
+    .playlistCard .playlistImageWrap {
+        position: relative;
+    }
+    .playlistCard .playCardBtn {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .libraryPage {
+        padding-top: 100px;
+    }
+    .avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 1.4rem;
+    }
+    .userName {
+        font-size: 2rem;
+    }
+    .playlistGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

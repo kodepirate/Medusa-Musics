@@ -1,0 +1,229 @@
+.downloadPage {
+    padding-top: 130px;
+    min-height: 100vh;
+    padding-bottom: 5rem;
+    overflow-x: hidden;
+    background: radial-gradient(circle at center, rgba(37, 209, 244, 0.05), transparent 70%);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 6rem;
+    padding: 0 2rem;
+}
+
+.title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.gradientText {
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ─── Devices Section ─────────────────────────────────── */
+.devicesContainer {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8rem;
+    padding: 0 2rem;
+}
+
+.deviceSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.mobileDeviceSection {
+    flex-direction: row-reverse;
+}
+
+.deviceImageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(100px);
+    opacity: 0.3;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cyanGlow {
+    background: var(--accent-cyan);
+}
+
+.magentaGlow {
+    background: var(--accent-pink);
+}
+
+.deviceImg {
+    position: relative;
+    z-index: 2;
+    object-fit: contain;
+    animation: float 6s ease-in-out infinite;
+    max-width: 100%;
+    height: auto;
+}
+
+.deviceImgMobile {
+    position: relative;
+    z-index: 2;
+    object-fit: contain;
+    animation: floatMobile 7s ease-in-out infinite reverse;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+    border-radius: 20px;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes floatMobile {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(-1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.deviceContent {
+    flex: 1;
+    max-width: 500px;
+}
+
+.deviceContent h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.deviceContent p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+/* ─── Buttons ─────────────────────────────────── */
+.buttonGroup {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    flex: 1;
+}
+
+.btnPrimary {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btnPrimary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(6, 249, 249, 0.2);
+    transform: translateY(-2px);
+}
+
+.btnOutline {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-secondary);
+}
+
+.btnOutline:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ─── Responsive ─────────────────────────────────── */
+@media (max-width: 1024px) {
+    .deviceSection, .mobileDeviceSection {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .deviceContent {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .deviceImageWrapper {
+        order: -1; /* Always image first on mobile stack */
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+    .deviceContent h2 {
+        font-size: 2.5rem;
+    }
+    .devicesContainer {
+        gap: 5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .downloadPage {
+        padding-top: 100px;
+    }
+    .title {
+        font-size: 2.5rem;
+    }
+    .deviceContent h2 {
+        font-size: 2rem;
+    }
+    .buttonGroup {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn {
+        width: 100%;
+    }
+}
