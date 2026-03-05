@@ -1,7 +1,7 @@
 .storePage {
     padding-top: 100px;
     min-height: 100vh;
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
     overflow-x: hidden;
 }
 
@@ -9,7 +9,7 @@
 .heroSection {
     margin: 2rem auto 4rem;
     max-width: var(--container-width);
-    padding: 0 2rem;
+    padding: 4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -17,7 +17,6 @@
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 30px;
-    padding: 4rem;
     position: relative;
     overflow: hidden;
 }
@@ -33,6 +32,35 @@
     pointer-events: none;
 }
 
+/* ─── Animated Gradient Orbs ─────────────────────── */
+.gradientOrb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.orb1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.6), transparent 70%);
+    top: -100px;
+    right: -50px;
+    animation: driftOrb1 12s ease-in-out infinite alternate;
+}
+
+.orb2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.4), transparent 70%);
+    bottom: -80px;
+    left: -30px;
+    animation: driftOrb2 10s ease-in-out infinite alternate;
+}
+
+/* ─── Hero Content (staggered entrance) ──────────── */
 .heroContent {
     flex: 1;
     z-index: 2;
@@ -50,6 +78,8 @@
     margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease-out 0.2s forwards;
 }
 
 .heroTitle {
@@ -57,12 +87,17 @@
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease-out 0.4s forwards;
 }
 
 .gradientText {
     background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: gradientShift 4s ease-in-out infinite alternate;
 }
 
 .heroSubtitle {
@@ -70,6 +105,16 @@
     color: var(--text-secondary);
     margin-bottom: 2.5rem;
     max-width: 400px;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease-out 0.6s forwards;
+}
+
+/* ─── Hero Actions ───────────────────────────────── */
+.heroActions {
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeSlideUp 0.8s ease-out 0.8s forwards;
 }
 
 .btn {
@@ -80,19 +125,74 @@
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
+    position: relative;
+    overflow: hidden;
 }
 
 .btnPrimary {
-    background: var(--gradient-btn);
+    background: var(--gradient-btn, linear-gradient(135deg, var(--accent-cyan), var(--accent-purple)));
     color: var(--bg-primary);
     box-shadow: 0 0 20px rgba(6, 249, 249, 0.4);
 }
 
-.btnPrimary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 30px rgba(6, 249, 249, 0.6);
+.btnPrimary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transition: none;
+    z-index: 1;
 }
 
+.btnPrimary:hover::before {
+    animation: shimmer 0.6s ease forwards;
+}
+
+.btnPrimary:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 35px rgba(6, 249, 249, 0.6), 0 0 20px rgba(138, 43, 226, 0.4);
+}
+
+.btnOutline {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.btnOutline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    padding: 2px;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-pink), var(--accent-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.btnOutline:hover {
+    transform: translateY(-3px);
+    border-color: transparent;
+    background: rgba(0, 242, 254, 0.08);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.3) inset, 0 0 20px rgba(0, 242, 254, 0.3);
+}
+
+.btnOutline:hover::before {
+    opacity: 1;
+}
+
+/* ─── Vinyl Image ────────────────────────────────── */
 .heroImageWrapper {
     flex: 1;
     display: flex;
@@ -104,27 +204,41 @@
 .vinylRecord {
     border-radius: 50%;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    animation: spin 20s linear infinite;
     position: relative;
     z-index: 2;
+    opacity: 0;
+    animation: fadeScaleIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s forwards,
+               floatAndSpin 20s linear 1.5s infinite;
 }
 
 .vinylGlow {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: var(--accent-purple);
+    width: 350px;
+    height: 350px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: blur(80px);
-    opacity: 0.5;
     z-index: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-purple) 0%, rgba(138, 43, 226, 0.3) 40%, transparent 70%);
+    filter: blur(60px);
+    opacity: 0;
+    animation: pulseGlow 4s ease-in-out 1s infinite, fadeIn 1s ease-out 0.5s forwards;
 }
 
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+.glowRing {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.2), inset 0 0 30px rgba(138, 43, 226, 0.1);
+    z-index: 1;
+    opacity: 0;
+    animation: pulseRing 3s ease-in-out 1.2s infinite, fadeIn 1s ease-out 1s forwards;
 }
 
 /* ─── Sections ─────────────────────────────────── */
@@ -160,51 +274,235 @@
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.2s;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.viewAll::after {
+    content: '→';
+    transition: transform 0.3s ease;
 }
 
 .viewAll:hover {
     color: var(--accent-cyan);
 }
 
-/* ─── Grid & Cards ─────────────────────────────────── */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+.viewAll:hover::after {
+    transform: translateX(4px);
+}
+
+/* ─── Category Filter Tabs ─────────────────────── */
+.categoryTabs {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.categoryTab {
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.categoryTab:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.categoryTabActive {
+    color: var(--bg-primary);
+    background: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.categoryTabActive:hover {
+    color: var(--bg-primary);
+    background: var(--accent-cyan);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.5);
+}
+
+/* ─── Infinite Scroll Carousel ─────────────────── */
+.carouselWrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+
+.carouselTrack {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scrollCarousel 40s linear infinite;
+}
+
+.carouselTrack:hover {
+    animation-play-state: paused;
 }
 
 .productCard {
+    min-width: 300px;
+    max-width: 300px;
+    flex-shrink: 0;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Scroll-reveal: initially hidden, revealed by IntersectionObserver */
+.scrollReveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1),
+                transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.scrollReveal.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .productCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(242, 13, 185, 0.1);
-    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(242, 13, 185, 0.15);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .productImage {
     width: 100%;
-    height: 250px;
+    height: 280px;
     background: rgba(0, 0, 0, 0.2);
     overflow: hidden;
+    position: relative;
 }
 
 .productImage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .productCard:hover .productImage img {
-    transform: scale(1.05);
+    transform: scale(1.08);
+}
+
+/* Product Badge (NEW / SALE / HOT) */
+.productBadge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 3;
+}
+
+.badgeNew {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.badgeSale {
+    background: var(--accent-pink);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(255, 8, 68, 0.3);
+}
+
+.badgeHot {
+    background: linear-gradient(135deg, #ff6a00, #ee0979);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(238, 9, 121, 0.3);
+}
+
+/* Wishlist Button */
+.wishlistBtn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.wishlistBtn:hover {
+    color: var(--accent-pink);
+    background: rgba(255, 8, 68, 0.15);
+    border-color: rgba(255, 8, 68, 0.3);
+    transform: scale(1.15);
+}
+
+/* Quick View Overlay */
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 9, 26, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+.productCard:hover .imageOverlay {
+    opacity: 1;
+}
+
+.quickViewBtn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transform: translateY(15px);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.productCard:hover .quickViewBtn {
+    transform: translateY(0);
+}
+
+.quickViewBtn:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
 }
 
 .productInfo {
@@ -212,14 +510,80 @@
 }
 
 .productInfo h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     margin-bottom: 0.3rem;
+    transition: color 0.3s ease;
+}
+
+.productCard:hover .productInfo h3 {
+    color: var(--accent-cyan);
 }
 
 .artist {
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Star Rating */
+.starRating {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.star {
+    font-size: 0.85rem;
+}
+
+.starFilled {
+    color: #ffc107;
+    text-shadow: 0 0 4px rgba(255, 193, 7, 0.3);
+}
+
+.starEmpty {
+    color: rgba(255, 255, 255, 0.15);
+}
+
+.ratingCount {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-left: 0.4rem;
+}
+
+/* Color Swatches */
+.colorSwatches {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.swatch:hover {
+    transform: scale(1.25);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.swatchActive {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
+}
+
+.swatchLabel {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-left: 0.25rem;
 }
 
 .priceRow {
@@ -228,10 +592,23 @@
     align-items: center;
 }
 
+.priceGroup {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
 .price {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--text-primary);
+}
+
+.originalPrice {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    opacity: 0.6;
 }
 
 .addToCart {
@@ -246,14 +623,56 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .addToCart:hover {
     background: var(--accent-pink);
     border-color: var(--accent-pink);
     color: #fff;
-    box-shadow: 0 0 15px rgba(242, 13, 185, 0.5);
+    box-shadow: 0 0 20px rgba(242, 13, 185, 0.5);
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* ─── Section Divider ────────────────────────────── */
+.sectionDivider {
+    max-width: var(--container-width);
+    margin: 0 auto 4rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.dividerLine {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.dividerIcon {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+    animation: pulse 3s ease-in-out infinite;
+}
+
+/* ─── Concert Section Enhanced ───────────────────── */
+.concertSection {
+    position: relative;
+}
+
+.concertHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.concertSubtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
 }
 
 /* ─── Tickets ─────────────────────────────────── */
@@ -270,11 +689,32 @@
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
     padding: 1.5rem 2rem;
-    transition: background 0.2s;
+    transition: background 0.3s, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.ticketCard::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ticketCard:hover::before {
+    opacity: 1;
 }
 
 .ticketCard:hover {
     background: rgba(255, 255, 255, 0.05);
+    transform: translateX(8px);
+    box-shadow: -4px 0 20px rgba(0, 242, 254, 0.15);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .ticketDate {
@@ -305,11 +745,63 @@
 .ticketDetails h3 {
     font-size: 1.3rem;
     margin-bottom: 0.3rem;
+    transition: color 0.3s ease;
 }
 
-.ticketDetails p {
+.ticketCard:hover .ticketDetails h3 {
+    color: var(--accent-cyan);
+}
+
+.ticketVenue {
     color: var(--text-secondary);
     font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.venueIcon {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Ticket Status Badge */
+.ticketStatus {
+    padding: 0.3rem 0.7rem;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 1rem;
+    white-space: nowrap;
+}
+
+.statusSellingFast {
+    background: rgba(255, 106, 0, 0.15);
+    color: #ff9a3c;
+    border: 1px solid rgba(255, 106, 0, 0.25);
+}
+
+.statusFewLeft {
+    background: rgba(255, 8, 68, 0.12);
+    color: var(--accent-pink);
+    border: 1px solid rgba(255, 8, 68, 0.2);
+    animation: pulseStatus 2s ease-in-out infinite;
+}
+
+.statusAvailable {
+    background: rgba(0, 242, 254, 0.08);
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+}
+
+.ticketPrice {
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+    white-space: nowrap;
 }
 
 .btnTicket {
@@ -320,13 +812,614 @@
     color: var(--accent-cyan);
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.btnTicket::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 242, 254, 0.2), transparent);
+    transition: none;
+}
+
+.btnTicket:hover::before {
+    animation: shimmer 0.6s ease forwards;
 }
 
 .btnTicket:hover {
     background: var(--accent-cyan);
     color: var(--bg-primary);
-    box-shadow: 0 0 15px rgba(6, 249, 249, 0.4);
+    box-shadow: 0 0 20px rgba(6, 249, 249, 0.5);
+    transform: scale(1.05);
+}
+
+/* ─── Now Playing / Featured Track ───────────────── */
+.nowPlayingSection {
+    max-width: var(--container-width);
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+}
+
+.playerCard {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+}
+
+.playerCard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(138, 43, 226, 0.12), transparent 60%),
+                radial-gradient(circle at 80% 50%, rgba(0, 242, 254, 0.08), transparent 60%);
+    pointer-events: none;
+}
+
+.albumArt {
+    width: 200px;
+    height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.albumArt img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.playerInfo {
+    flex: 1;
+    z-index: 1;
+}
+
+.nowPlayingLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.liveIndicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    animation: pulseDot 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+}
+
+.trackTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.trackArtist {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.waveformContainer {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+.waveBar {
+    width: 4px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+    animation: waveAnim 1.2s ease-in-out infinite;
+}
+
+.progressRow {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.progressBar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    width: 65%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    border-radius: 2px;
+}
+
+.progressTime {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+    min-width: 35px;
+}
+
+.playerControls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.playBtn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    border: none;
+    color: var(--bg-primary);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+}
+
+.playBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.5);
+}
+
+.controlBtn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.controlBtn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Trending Tracks Chart ──────────────────────── */
+.trendingSection {
+    max-width: var(--container-width);
+    margin: 0 auto 5rem;
+    padding: 0 2rem;
+}
+
+.trendingHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.trendingSubtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 0.4rem;
+}
+
+.chartList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.chartRow {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.5rem;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.chartRow:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+    transform: translateX(6px);
+}
+
+.chartRank {
+    font-size: 1.4rem;
+    font-weight: 800;
+    min-width: 36px;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.chartRow:nth-child(1) .chartRank { color: var(--accent-cyan); text-shadow: 0 0 10px rgba(0, 242, 254, 0.4); }
+.chartRow:nth-child(2) .chartRank { color: var(--accent-pink); text-shadow: 0 0 10px rgba(242, 13, 185, 0.3); }
+.chartRow:nth-child(3) .chartRank { color: var(--accent-purple); text-shadow: 0 0 10px rgba(138, 43, 226, 0.3); }
+
+.chartThumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.chartThumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.chartInfo {
+    flex: 1;
+}
+
+.chartInfo h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+    transition: color 0.3s ease;
+}
+
+.chartRow:hover .chartInfo h4 {
+    color: var(--accent-cyan);
+}
+
+.chartInfo p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.chartStats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.chartStat {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.chartStatIcon {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.chartTrend {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    background: rgba(0, 242, 254, 0.1);
+    color: var(--accent-cyan);
+}
+
+.chartPlayBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.chartRow:hover .chartPlayBtn {
+    opacity: 1;
+}
+
+.chartPlayBtn:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+}
+
+/* ─── Community CTA ──────────────────────────────── */
+.communityCta {
+    max-width: var(--container-width);
+    margin: 0 auto 0;
+    padding: 0 2rem;
+}
+
+.ctaCard {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    padding: 4rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(0, 242, 254, 0.08));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctaCard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(138, 43, 226, 0.2), transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(0, 242, 254, 0.1), transparent 60%);
+    pointer-events: none;
+}
+
+.ctaEmoji {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.ctaTitle {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ctaSubtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+}
+
+.ctaForm {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    max-width: 460px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.ctaInput {
+    flex: 1;
+    padding: 0.9rem 1.5rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.ctaInput::placeholder {
+    color: var(--text-secondary);
+}
+
+.ctaInput:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.ctaSubmit {
+    padding: 0.9rem 2rem;
+    border-radius: 30px;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+    color: var(--bg-primary);
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    white-space: nowrap;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+}
+
+.ctaSubmit:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.5), 0 0 15px rgba(138, 43, 226, 0.4);
+}
+
+.ctaPerks {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+.ctaPerk {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.ctaPerkIcon {
+    color: var(--accent-cyan);
+    font-size: 0.9rem;
+}
+
+/* ─── Keyframes ─────────────────────────────────── */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(30px);
+        filter: blur(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes floatAndSpin {
+    0% {
+        transform: rotate(0deg) translateY(0px);
+    }
+    25% {
+        transform: rotate(90deg) translateY(-8px);
+    }
+    50% {
+        transform: rotate(180deg) translateY(0px);
+    }
+    75% {
+        transform: rotate(270deg) translateY(-8px);
+    }
+    100% {
+        transform: rotate(360deg) translateY(0px);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.4;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.15);
+    }
+}
+
+@keyframes pulseRing {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1.08);
+        border-color: rgba(0, 242, 254, 0.4);
+        box-shadow: 0 0 40px rgba(0, 242, 254, 0.3), inset 0 0 40px rgba(0, 242, 254, 0.15);
+    }
+}
+
+@keyframes shimmer {
+    from { left: -100%; }
+    to { left: 100%; }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@keyframes driftOrb1 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-60px, 40px) scale(1.1);
+    }
+    100% {
+        transform: translate(30px, -20px) scale(0.95);
+    }
+}
+
+@keyframes driftOrb2 {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(50px, -30px) scale(1.15);
+    }
+    100% {
+        transform: translate(-40px, 20px) scale(0.9);
+    }
+}
+
+@keyframes scrollCarousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes pulseStatus {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes waveAnim {
+    0%, 100% { height: 8px; }
+    50% { height: 100%; }
+}
+
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
 }
 
 /* ─── Responsive ─────────────────────────────────── */
@@ -340,13 +1433,61 @@
     .heroSubtitle {
         margin: 0 auto 2.5rem;
     }
+
+    .heroActions {
+        justify-content: center;
+    }
+
+    .glowRing {
+        width: 350px;
+        height: 350px;
+    }
+
+    .playerCard {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .albumArt {
+        width: 160px;
+        height: 160px;
+    }
+
+    .waveformContainer {
+        justify-content: center;
+    }
+
+    .playerControls {
+        justify-content: center;
+    }
+
+    .chartStats {
+        display: none;
+    }
+
+    .ctaCard {
+        padding: 3rem 2rem;
+    }
+
+    .ctaForm {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ctaInput,
+    .ctaSubmit {
+        width: 100%;
+        max-width: 340px;
+    }
 }
 
 @media (max-width: 768px) {
     .ticketCard {
         flex-direction: column;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1rem;
+        padding: 1.5rem;
     }
 
     .ticketDate {
@@ -363,9 +1504,38 @@
     .ticketDetails {
         padding-left: 0;
     }
+
+    .ticketActions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        width: 100%;
+    }
     
     .btnTicket {
         width: 100%;
+    }
+
+    .ticketCard:hover {
+        transform: translateY(-4px);
+    }
+
+    .orb1 {
+        width: 250px;
+        height: 250px;
+    }
+    .orb2 {
+        width: 200px;
+        height: 200px;
+    }
+
+    .categoryTabs {
+        gap: 0.5rem;
+    }
+
+    .sectionDivider {
+        margin: 0 auto 3rem;
     }
 }
 
@@ -379,5 +1549,19 @@
     .vinylRecord {
         width: 250px;
         height: 250px;
+    }
+    .glowRing {
+        width: 280px;
+        height: 280px;
+    }
+    .heroActions {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    .btn {
+        width: 100%;
+        max-width: 260px;
+        text-align: center;
     }
 }

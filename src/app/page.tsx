@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic';
-import Navbar from '@/components/Navbar/Navbar';
 import Hero from '@/components/Hero/Hero';
 
 // Dynamically import below-the-fold components to reduce initial JS payload
@@ -14,7 +13,6 @@ const Footer = dynamic(() => import('@/components/Footer/Footer'));
 export default function Home() {
   return (
     <main>
-      <Navbar />
       <Hero />
       <SectionPremium />
       <NewReleases />

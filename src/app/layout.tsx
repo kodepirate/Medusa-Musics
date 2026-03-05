@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import Navbar from "@/components/Navbar/Navbar";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -24,6 +25,7 @@ export default function RootLayout({
       </head>
       <body className={`${outfit.variable}`}>
         <Providers>
+          <Navbar />
           {children}
         </Providers>
       </body>
