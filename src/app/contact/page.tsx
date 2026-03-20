@@ -27,8 +27,8 @@ export default function Contact() {
                             </div>
                             <div className={styles.inputGroup}>
                                 <label htmlFor="subject">Subject</label>
-                                <select id="subject" required>
-                                    <option value="" disabled selected>Select a topic</option>
+                                <select id="subject" required defaultValue="">
+                                    <option value="" disabled>Select a topic</option>
                                     <option value="billing">Billing & Subscriptions</option>
                                     <option value="tech">Technical Support</option>
                                     <option value="feedback">Feedback & Suggestions</option>

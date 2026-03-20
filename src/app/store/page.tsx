@@ -324,7 +324,7 @@ export default function Store() {
                                     className={styles.waveBar}
                                     style={{
                                         animationDelay: `${i * 0.08}s`,
-                                        height: `${8 + Math.random() * 32}px`,
+                                        height: `${8 + ((i * 7 + 13) % 32)}px`,
                                     }}
                                 />
                             ))}
