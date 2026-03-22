@@ -1,11 +1,15 @@
 "use client";
 
+import { usePathname } from 'next/navigation';
 import { useAudio } from '@/context/AudioContext';
 import styles from './MusicPlayBar.module.css';
 
 export default function MusicPlayBar() {
+    const pathname = usePathname();
     const { isPlaying, currentTrack, togglePlay, progress, nextTrack, prevTrack } = useAudio();
 
+    // Hide on home section
+    if (pathname === '/') return null;
     if (!currentTrack) return null;
 
     return (
