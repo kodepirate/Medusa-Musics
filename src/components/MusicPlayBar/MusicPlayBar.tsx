@@ -8,8 +8,9 @@ export default function MusicPlayBar() {
     const pathname = usePathname();
     const { isPlaying, currentTrack, togglePlay, progress, nextTrack, prevTrack } = useAudio();
 
-    // Hide on home section
-    if (pathname === '/') return null;
+    // Show only in store section
+    if (!pathname || !pathname.startsWith('/store')) return null;
+
     if (!currentTrack) return null;
 
     return (
